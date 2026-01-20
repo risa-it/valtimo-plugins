@@ -1,0 +1,8 @@
+diff a/backend/openklant/src/main/kotlin/com/ritense/valtimoplugins/openklant/plugin/OpenKlantPlugin.kt b/backend/openklant/src/main/kotlin/com/ritense/valtimoplugins/openklant/plugin/OpenKlantPlugin.kt	(rejected hunks)
+@@ -143,4 +143,4 @@ class OpenKlantPlugin(
+         private const val OUTPUT_PARTIJ_UUID = "partijUuid"
+         private val logger = KotlinLogging.logger { }
+     }
+-}
+\ No newline at end of file
++}
