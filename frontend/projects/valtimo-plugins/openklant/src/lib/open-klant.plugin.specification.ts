@@ -74,6 +74,12 @@ const openKlantPluginSpecification: PluginSpecification = {
         "Bevat het klantcontact een betrokkene of is het anoniem?",
       "heeftBetrokkene.betrokkene": "Heeft betrokkene",
       "heeftBetrokkene.anoniem": "Is anoniem",
+
+      // Set standaard digitaal adres
+      "set-default-digitaal-adres": "Ze standaard digitaal adres",
+      digitaalAdres: "Digitaal adres",
+      soortDigitaalAdres: "Soort digitaal adres ('email'/'telefoonnummer'/'overig')",
+      verificatieDatum: "Verificatie datum",
     },
 
     en: {
@@ -129,6 +135,12 @@ const openKlantPluginSpecification: PluginSpecification = {
         "Does the contact moment involve an individual or is it anonymous?",
       "heeftBetrokkene.betrokkene": "Has an individual",
       "heeftBetrokkene.anoniem": "Is anonymous",
+
+      // Set default digital address
+      "set-default-digitaal-adres": "Set default digital address",
+      digitaalAdres: "Digital address",
+      soortDigitaalAdres: "Type of digital address ('email'/'telefoonnummer'/'overig')",
+      verificatieDatum: "Verification datum",
     }
   },
 };
