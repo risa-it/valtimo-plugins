@@ -120,7 +120,7 @@ class OpenKlantPlugin(
                 partijUuid = partijUuid,
                 adres = adres,
                 soortDigitaalAdres = soortDigitaalAdres,
-                referentie = "PortaalVoorkeur",
+                referentie = DEFAULT_DIGITALE_ADRES_REFERENCE,
                 verificatieDatum = verificatieDatum,
             )
         val properties = OpenKlantProperties(klantinteractiesUrl, token)
@@ -269,6 +269,7 @@ class OpenKlantPlugin(
 
     companion object {
         private const val OUTPUT_PARTIJ_UUID = "partijUuid"
+        private const val DEFAULT_DIGITALE_ADRES_REFERENCE = "PortaalVoorkeur"
         private val logger = KotlinLogging.logger { }
     }
 }
