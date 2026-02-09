@@ -39,7 +39,14 @@ export class SetDefaultDigitaalAdresComponent
   }
 
   private handleValid(formValue: SetDefaultDigitaalAdresConfig): void {
-    const valid =
+    const valid = !!formValue.resultPvName &&
+      !!formValue.partijUuid &&
+      !!formValue.adres &&
+      !!formValue.soortDigitaalAdres &&
+      !!formValue.verificatieDatum;
+
+    this.valid$.next(valid);
+    this.valid.emit(valid);
   }
 
   private openSaveSubscription(): void {
