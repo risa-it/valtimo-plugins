@@ -1,11 +1,23 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {FunctionConfigurationComponent, FunctionConfigurationData, PluginConfigurationData} from "@valtimo/plugin";
+import {
+  FunctionConfigurationComponent,
+  FunctionConfigurationData,
+  PluginTranslatePipeModule
+} from "@valtimo/plugin";
 import {BehaviorSubject, combineLatest, Observable, Subscription, take} from "rxjs";
 import {SetDefaultDigitaalAdresConfig} from "../../models/set-default-digitaal-adres-config";
+import {AsyncPipe, NgIf} from "@angular/common";
+import {FormModule, InputModule} from "@valtimo/components";
 
 @Component({
   selector: 'lib-set-default-digitaal-adres',
-  imports: [],
+  imports: [
+    AsyncPipe,
+    FormModule,
+    InputModule,
+    NgIf,
+    PluginTranslatePipeModule
+  ],
   standalone: true,
   templateUrl: './set-default-digitaal-adres.component.html'
 })
