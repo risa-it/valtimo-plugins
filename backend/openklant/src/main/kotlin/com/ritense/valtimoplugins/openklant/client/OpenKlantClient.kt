@@ -134,7 +134,7 @@ class OpenKlantClient(
                     uriBuilder
                         .path(OK_DIGITALE_ADRESSEN_PATH)
                         .queryParam(OK_VERSTREKT_DOOR_PARTIJ_ID_PARAM, partijUuid)
-                        .queryParam(OK_SOORT_DIGITAAL_ADRES_PARAM, soortDigitaalAdres)
+                        .queryParam(OK_SOORT_DIGITAAL_ADRES_PARAM, soortDigitaalAdres.value)
                         .queryParam(OK_REFERENTIE_PARAM, referentie)
                         .build()
                 }.retrieve()
