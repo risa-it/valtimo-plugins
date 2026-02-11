@@ -10,7 +10,7 @@ import {AsyncPipe, NgIf} from "@angular/common";
 import {FormModule, InputModule} from "@valtimo/components";
 
 @Component({
-  selector: 'lib-set-default-digitaal-adres',
+  selector: 'set-default-digitaal-adres',
   imports: [
     AsyncPipe,
     FormModule,
