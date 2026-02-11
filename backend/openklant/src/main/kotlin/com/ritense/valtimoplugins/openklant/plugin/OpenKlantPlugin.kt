@@ -269,7 +269,7 @@ class OpenKlantPlugin(
 
     companion object {
         private const val OUTPUT_PARTIJ_UUID = "partijUuid"
-        private const val DEFAULT_DIGITALE_ADRES_REFERENCE = "PortaalVoorkeur"
+        private const val DEFAULT_DIGITALE_ADRES_REFERENCE = "portaalvoorkeur"
         private val logger = KotlinLogging.logger { }
     }
 }
