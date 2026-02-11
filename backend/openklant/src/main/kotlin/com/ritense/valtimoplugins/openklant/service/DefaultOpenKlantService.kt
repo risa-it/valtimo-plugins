@@ -54,6 +54,7 @@ class DefaultOpenKlantService(
                 soortDigitaalAdres = adresInformation.soortDigitaalAdres,
                 isStandaardAdres = true,
                 referentie = adresInformation.referentie,
+                verificatieDatum = adresInformation.verificatieDatum,
             )
 
         return openKlantClient.createDigitaalAdres(
