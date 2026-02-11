@@ -80,7 +80,7 @@ const openKlantPluginSpecification: PluginSpecification = {
       "heeftBetrokkene.anoniem": "Is anoniem",
 
       // Set standaard digitaal adres
-      "set-default-digitaal-adres": "Ze standaard digitaal adres",
+      "set-default-digitaal-adres": "Instellen van standaard digitaal adres",
       digitaalAdres: "Digitaal adres",
       soortDigitaalAdres: "Soort digitaal adres ('email'/'telefoonnummer'/'overig')",
       verificatieDatum: "Verificatie datum (YYYY-MM-DD)",
