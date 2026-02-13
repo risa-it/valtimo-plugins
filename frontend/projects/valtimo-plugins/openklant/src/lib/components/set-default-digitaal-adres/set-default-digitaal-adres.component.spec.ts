@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SetDefaultDigitaalAdresComponent } from './set-default-digitaal-adres.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {SetDefaultDigitaalAdresComponent} from './set-default-digitaal-adres.component';
 import {GetOrCreatePartijComponent} from "../get-or-create-partij/get-or-create-partij.component";
 import {EMPTY, of} from "rxjs";
 import {GetOrCreatePartijConfig} from "../../models/get-or-create-partij-config";
