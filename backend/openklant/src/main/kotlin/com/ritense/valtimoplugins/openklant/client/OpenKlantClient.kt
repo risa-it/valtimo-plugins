@@ -102,7 +102,7 @@ class OpenKlantClient(
         } catch (e: WebClientResponseException.InternalServerError) {
             handleInternalServerError(e)
         } catch (e: WebClientResponseException) {
-            handleResponseException(e, "Error fetching DigitaalAdres(by partij, by uuid)")
+            handleResponseException(e, "Error fetching DigitaalAdres for partij: $uuid")
         }
 
     suspend fun getDigitaalAdresByUuid(
@@ -118,7 +118,7 @@ class OpenKlantClient(
         } catch (e: WebClientResponseException.InternalServerError) {
             handleInternalServerError(e)
         } catch (e: WebClientResponseException) {
-            handleResponseException(e, "Error fetching DigitaalAdres(by uuid)")
+            handleResponseException(e, "Error fetching DigitaalAdres with uuid: $digitaalAdresUuid")
         }
 
     suspend fun getDefaultAdressenBySoort(
@@ -143,7 +143,7 @@ class OpenKlantClient(
         } catch (e: WebClientResponseException.InternalServerError) {
             handleInternalServerError(e)
         } catch (e: WebClientResponseException) {
-            handleResponseException(e, "Error fetching Default Adressen")
+            handleResponseException(e, "Error fetching Default ${soortDigitaalAdres.value} Adressen for partij: $partijUuid")
         }
 
     suspend fun patchDigitaalAdres(
@@ -160,7 +160,7 @@ class OpenKlantClient(
     } catch (e: WebClientResponseException.InternalServerError) {
         handleInternalServerError(e)
     } catch (e: WebClientResponseException) {
-        handleResponseException(e, "Error patching DigitaalAdres")
+        handleResponseException(e, "Error patching DigitaalAdres with uuid: $digitaalAdresUuid")
     }
 
     suspend fun createDigitaalAdres(
