@@ -6,10 +6,13 @@ import {
   OnInit,
   Output,
 } from "@angular/core";
+import { AsyncPipe, NgIf } from "@angular/common";
 import {
   PluginConfigurationComponent,
   PluginConfigurationData,
+  PluginTranslatePipeModule,
 } from "@valtimo/plugin";
+import { FormModule, InputModule } from "@valtimo/components";
 import {
   BehaviorSubject,
   combineLatest,
@@ -21,6 +24,8 @@ import { Config } from "../../models/config";
 
 @Component({
   selector: "open-klant-plugin-configuration",
+  standalone: true,
+  imports: [AsyncPipe, FormModule, InputModule, NgIf, PluginTranslatePipeModule],
   templateUrl: "./open-klant-plugin-configuration.component.html",
   styleUrl: "./open-klant-plugin-configuration.component.scss",
 })

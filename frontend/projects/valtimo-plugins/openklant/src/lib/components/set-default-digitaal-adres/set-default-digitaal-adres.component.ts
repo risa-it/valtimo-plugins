@@ -45,7 +45,7 @@ export class SetDefaultDigitaalAdresComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: SetDefaultDigitaalAdresConfig): void {
+  formValueChange(formValue: any): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }

@@ -59,7 +59,7 @@ export class GetContactMomentsByBsnComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: GetContactMomentsByBsnConfig): void {
+  formValueChange(formValue: any): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }

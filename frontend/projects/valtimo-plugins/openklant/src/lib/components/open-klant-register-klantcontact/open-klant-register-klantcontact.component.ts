@@ -73,7 +73,7 @@ export class RegisterKlantcontactComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: RegisterKlantcontactConfig): void {
+  formValueChange(formValue: any): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }

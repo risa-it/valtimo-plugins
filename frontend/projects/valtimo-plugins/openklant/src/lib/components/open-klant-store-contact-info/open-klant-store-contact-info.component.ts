@@ -6,10 +6,13 @@ import {
   OnInit,
   Output,
 } from "@angular/core";
+import { AsyncPipe, NgIf } from "@angular/common";
 import {
   FunctionConfigurationComponent,
   FunctionConfigurationData,
+  PluginTranslatePipeModule,
 } from "@valtimo/plugin";
+import { FormModule, InputModule } from "@valtimo/components";
 import {
   Observable,
   BehaviorSubject,
@@ -21,6 +24,8 @@ import { StoreContactInfoConfig } from "../../models/store-contact-info-config";
 
 @Component({
   selector: "store-contact-info",
+  standalone: true,
+  imports: [AsyncPipe, FormModule, InputModule, NgIf, PluginTranslatePipeModule],
   templateUrl: "./open-klant-store-contact-info.component.html"
 })
 export class StoreContactInfoComponent
@@ -46,7 +51,7 @@ export class StoreContactInfoComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: StoreContactInfoConfig): void {
+  formValueChange(formValue: any): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }

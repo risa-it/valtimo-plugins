@@ -40,7 +40,7 @@ export class GetOrCreatePartijComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: GetOrCreatePartijConfig): void {
+  formValueChange(formValue: any): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }

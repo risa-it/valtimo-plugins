@@ -60,7 +60,7 @@ export class GetContactMomentsByCaseUuidComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: GetContactMomentsByCaseUuidConfig): void {
+  formValueChange(formValue: any): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }
