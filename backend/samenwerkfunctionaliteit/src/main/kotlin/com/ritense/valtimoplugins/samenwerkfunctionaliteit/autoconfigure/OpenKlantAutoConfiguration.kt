@@ -2,14 +2,8 @@ package com.ritense.valtimoplugins.samenwerkfunctionaliteit.autoconfigure
 
 import com.ritense.plugin.service.PluginService
 import com.ritense.processdocument.service.ProcessDocumentService
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPluginFactory
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.resolver.OpenKlantValueResolverFactory
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.DefaultOpenKlantService
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.KlantcontactFactory
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.OpenKlantService
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.PartijFactory
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.util.ReflectionUtil
 import com.ritense.zakenapi.service.ZaakDocumentService
 import org.springframework.beans.factory.annotation.Value
@@ -29,16 +23,6 @@ class OpenKlantAutoConfiguration {
         _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient(
             openKlantRestClientBuilder,
         )
-
-    @Bean
-    fun partijFactory(): com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.PartijFactory =
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.service
-            .PartijFactory()
-
-    @Bean
-    fun klantContactFactory(): com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.KlantcontactFactory =
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.service
-            .KlantcontactFactory()
 
     @Bean
     fun openKlantService(
@@ -86,9 +70,4 @@ class OpenKlantAutoConfiguration {
             openKlantToken,
         ),
     )
-
-    @Bean
-    fun reflectionUtil() =
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.util
-            .ReflectionUtil()
 }
