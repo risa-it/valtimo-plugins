@@ -23,7 +23,7 @@ import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriBuilder
 import java.net.URI
 
-class OpenKlantClient(
+class SamenwerkfunctionaliteitClient(
     private val openKlantRestClientBuilder: RestClient.Builder,
 ) {
     fun getPartijByBsn(
@@ -36,15 +36,15 @@ class OpenKlantClient(
                 .uri { uriBuilder ->
                     uriBuilder
                         .path(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_PARTIJEN_PATH,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_PARTIJEN_PATH,
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_SOORT_PARTIJ_IDENTIFICATOR_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_SOORT_PARTIJ_IDENTIFICATOR_PARAM,
                             "bsn",
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_PARTIJ_IDENTIFICATOR_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_PARTIJ_IDENTIFICATOR_PARAM,
                             bsn,
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_SOORT_PARTIJ_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_SOORT_PARTIJ_PARAM,
                             "persoon",
                         ).build()
                 }.retrieve()
@@ -65,7 +65,7 @@ class OpenKlantClient(
             restClient(properties)
                 .post()
                 .uri(
-                    _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_PARTIJEN_PATH,
+                    _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_PARTIJEN_PATH,
                 ).body(request)
                 .retrieve()
                 .body<com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Partij>()
@@ -85,7 +85,7 @@ class OpenKlantClient(
             restClient(properties)
                 .patch()
                 .uri(
-                    "${_root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_PARTIJEN_PATH}/$id",
+                    "${_root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_PARTIJEN_PATH}/$id",
                 ).body(patchData)
                 .retrieve()
                 .body<com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Partij>()
@@ -106,9 +106,9 @@ class OpenKlantClient(
                 .uri { uriBuilder ->
                     uriBuilder
                         .path(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_DIGITALE_ADRESSEN_PATH,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_DIGITALE_ADRESSEN_PATH,
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_VERSTREKT_DOOR_PARTIJ_ID_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_VERSTREKT_DOOR_PARTIJ_ID_PARAM,
                             uuid,
                         ).build()
                 }.retrieve()
@@ -129,7 +129,7 @@ class OpenKlantClient(
             restClient(properties)
                 .get()
                 .uri(
-                    "${_root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_DIGITALE_ADRESSEN_PATH}/$digitaalAdresUuid",
+                    "${_root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_DIGITALE_ADRESSEN_PATH}/$digitaalAdresUuid",
                 ).retrieve()
                 .body<com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres>()
                 ?: throw IllegalStateException("Error fetching DigitaalAdres: response body was null")
@@ -151,15 +151,15 @@ class OpenKlantClient(
                 .uri { uriBuilder ->
                     uriBuilder
                         .path(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_DIGITALE_ADRESSEN_PATH,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_DIGITALE_ADRESSEN_PATH,
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_VERSTREKT_DOOR_PARTIJ_ID_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_VERSTREKT_DOOR_PARTIJ_ID_PARAM,
                             partijUuid,
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_SOORT_DIGITAAL_ADRES_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_SOORT_DIGITAAL_ADRES_PARAM,
                             soortDigitaalAdres.value,
                         ).queryParam(
-                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_REFERENTIE_PARAM,
+                            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_REFERENTIE_PARAM,
                             referentie,
                         ).build()
                 }.retrieve()
@@ -183,7 +183,7 @@ class OpenKlantClient(
         restClient(properties)
             .patch()
             .uri(
-                "${_root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_DIGITALE_ADRESSEN_PATH}/$digitaalAdresUuid",
+                "${_root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_DIGITALE_ADRESSEN_PATH}/$digitaalAdresUuid",
             ).body(patchData)
             .retrieve()
             .body<com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres>()
@@ -202,7 +202,7 @@ class OpenKlantClient(
             restClient(properties)
                 .post()
                 .uri(
-                    _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_DIGITALE_ADRESSEN_PATH,
+                    _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_DIGITALE_ADRESSEN_PATH,
                 ).body(request)
                 .retrieve()
                 .body<com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres>()
@@ -246,7 +246,7 @@ class OpenKlantClient(
             restClient(properties)
                 .post()
                 .uri(
-                    _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_MAAK_KLANTCONTACT_PATH,
+                    _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_MAAK_KLANTCONTACT_PATH,
                 ).body(request)
                 .retrieve()
                 .toBodilessEntity()
@@ -271,39 +271,41 @@ class OpenKlantClient(
     ): URI {
         options.objectTypeId?.let {
             builder.queryParam(
-                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_OBJECTTYPE_PARAM,
+                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_OBJECTTYPE_PARAM,
                 it,
             )
         }
         options.bsn?.let {
             builder.queryParam(
-                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_BSN_PARAM,
+                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_BSN_PARAM,
                 it,
             )
         }
         options.objectUuid?.let {
             builder.queryParam(
-                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_OBJECT_ID_PARAM,
+                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_OBJECT_ID_PARAM,
                 it,
             )
         }
         options.partijUuid?.let {
             builder.queryParam(
-                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_PARTIJ_UUID_PARAM,
+                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_PARTIJ_UUID_PARAM,
                 it,
             )
         }
         return builder
             .path(
-                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.OK_KLANTCONTACTEN_PATH,
+                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.OK_KLANTCONTACTEN_PATH,
             ).build()
     }
 
     private fun handleInternalServerError(e: HttpServerErrorException.InternalServerError): Nothing {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.logger.warn {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.logger.warn {
             "Response body:  ${e.responseBodyAsString}"
         }
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.logger.error(e) {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.logger.error(
+            e,
+        ) {
             "Internal Server Error calling Open Klant"
         }
         throw ResponseStatusException(
@@ -317,10 +319,12 @@ class OpenKlantClient(
         e: RestClientResponseException,
         reason: String,
     ): Nothing {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.logger.warn(e) {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.logger.warn(
+            e,
+        ) {
             "Client error calling Open Klant"
         }
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient.Companion.logger.warn {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient.Companion.logger.warn {
             "Response body:  ${e.responseBodyAsString}"
         }
         throw ResponseStatusException(

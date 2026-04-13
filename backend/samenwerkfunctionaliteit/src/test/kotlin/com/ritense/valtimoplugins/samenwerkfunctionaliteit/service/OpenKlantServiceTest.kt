@@ -1,6 +1,6 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.service
 
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.CreateDigitaalAdresRequest
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.CreatePartijRequest
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres
@@ -22,7 +22,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import java.net.URI
-import kotlin.text.get
 
 @ExtendWith(MockKExtension::class)
 class OpenKlantServiceTest {
@@ -33,7 +32,7 @@ class OpenKlantServiceTest {
         )
 
     @MockK
-    lateinit var client: OpenKlantClient
+    lateinit var client: SamenwerkfunctionaliteitClient
 
     @MockK
     lateinit var partijFactory: PartijFactory

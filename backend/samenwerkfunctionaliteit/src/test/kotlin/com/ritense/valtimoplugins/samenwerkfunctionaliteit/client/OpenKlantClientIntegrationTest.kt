@@ -1,4 +1,3 @@
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactOptions
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -11,7 +10,7 @@ internal class OpenKlantClientIntegrationTest {
     private val restClientBuilder = mockk<RestClient.Builder>(relaxed = true)
     private val client =
         _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.client
-            .OpenKlantClient(restClientBuilder)
+            .SamenwerkfunctionaliteitClient(restClientBuilder)
 
     @Test
     fun `buildOpenKlantUri builds correct URI with all options`() {
