@@ -1,5 +1,5 @@
 dockerCompose {
-    setProjectName("openklant")
+    setProjectName("samenwerkfunctionaliteit")
     isRequiredBy(project.tasks.integrationTesting)
 
     tasks.integrationTesting {
