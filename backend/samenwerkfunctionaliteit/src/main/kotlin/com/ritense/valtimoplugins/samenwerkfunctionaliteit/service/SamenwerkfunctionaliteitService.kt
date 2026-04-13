@@ -1,16 +1,6 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.service
 
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Klantcontact
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Partij
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.AdresInformation
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.ContactInformation
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactCreationInformation
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactOptions
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.PartijInformation
-
-interface OpenKlantService {
+interface SamenwerkfunctionaliteitService {
     fun storeContactInformation(
         properties: com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties,
         contactInformation: com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.ContactInformation,

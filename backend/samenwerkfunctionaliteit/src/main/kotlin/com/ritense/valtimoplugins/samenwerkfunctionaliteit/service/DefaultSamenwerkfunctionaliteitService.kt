@@ -1,6 +1,5 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.service
 
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.CreateDigitaalAdresRequest
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Klantcontact
@@ -14,11 +13,11 @@ import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactOpt
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties
 import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.PartijInformation
 
-class DefaultOpenKlantService(
-    private val openKlantClient: com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient,
+class DefaultSamenwerkfunctionaliteitService(
+    private val openKlantClient: com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.SamenwerkfunctionaliteitClient,
     private val partijFactory: com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.PartijFactory,
     private val klantcontactFactory: com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.KlantcontactFactory,
-) : com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.OpenKlantService {
+) : com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.SamenwerkfunctionaliteitService {
     override fun storeContactInformation(
         properties: com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties,
         contactInformation: com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.ContactInformation,

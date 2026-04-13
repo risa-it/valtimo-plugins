@@ -39,7 +39,7 @@ class OpenKlantServiceTest {
 
     @MockK
     lateinit var klantContactFactory: KlantcontactFactory
-    lateinit var service: OpenKlantService
+    lateinit var service: SamenwerkfunctionaliteitService
 
     private val defaultDigitaalAdres =
         _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres(
@@ -131,7 +131,7 @@ class OpenKlantServiceTest {
     fun setUp() {
         MockKAnnotations.init(this)
         service =
-            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.DefaultOpenKlantService(
+            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.DefaultSamenwerkfunctionaliteitService(
                 client,
                 partijFactory,
                 klantContactFactory,

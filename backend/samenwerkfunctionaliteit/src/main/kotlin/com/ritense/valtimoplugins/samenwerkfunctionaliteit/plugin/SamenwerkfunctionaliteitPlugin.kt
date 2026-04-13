@@ -5,27 +5,18 @@ import com.ritense.plugin.annotation.PluginAction
 import com.ritense.plugin.annotation.PluginActionProperty
 import com.ritense.plugin.annotation.PluginProperty
 import com.ritense.processlink.domain.ActivityTypeWithEventName
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.AdresInformation
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.ContactInformation
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactCreationInformation
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactOptions
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.PartijInformationImpl
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.OpenKlantService
-import com.ritense.valtimoplugins.samenwerkfunctionaliteit.util.ReflectionUtil
 import mu.KotlinLogging
 import org.operaton.bpm.engine.delegate.DelegateExecution
 import java.net.URI
 
 @Plugin(
-    key = "openklant",
-    title = "Open Klant 2 Plugin",
-    description = "Open Klant 2 plugin",
+    key = "samenwerkingfunctionaliteit",
+    title = "DSO-Samenwerkingfunctionaliteit Plugin",
+    description = "DSO-Samenwerkingfunctionaliteit Plugin",
 )
 @Suppress("UNUSED")
-class OpenKlantPlugin(
-    private val openKlantPluginService: com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.OpenKlantService,
-    private val reflectionUtil: com.ritense.valtimoplugins.samenwerkfunctionaliteit.util.ReflectionUtil,
+class SamenwerkfunctionaliteitPlugin(
+    private val openKlantPluginService: com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.SamenwerkfunctionaliteitService,
 ) {
     @PluginProperty(key = "klantinteractiesUrl", secret = false, required = true)
     lateinit var klantinteractiesUrl: URI
@@ -48,7 +39,7 @@ class OpenKlantPlugin(
         @PluginActionProperty emailAddress: String,
         @PluginActionProperty caseUuid: String,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Store Contactinformation in Open Klant - ${execution.processBusinessKey}"
         }
 
@@ -69,7 +60,7 @@ class OpenKlantPlugin(
         val partijUuid = openKlantPluginService.storeContactInformation(properties, contactInformation)
 
         execution.setVariable(
-            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.OUTPUT_PARTIJ_UUID,
+            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.OUTPUT_PARTIJ_UUID,
             partijUuid,
         )
     }
@@ -88,7 +79,7 @@ class OpenKlantPlugin(
         @PluginActionProperty voorvoegselAchternaam: String,
         @PluginActionProperty achternaam: String,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Get or Create partij in Open Klant - ${execution.processBusinessKey}"
         }
 
@@ -112,7 +103,7 @@ class OpenKlantPlugin(
                 .uuid
 
         execution.setVariable(
-            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.OUTPUT_PARTIJ_UUID,
+            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.OUTPUT_PARTIJ_UUID,
             partijUuid,
         )
     }
@@ -131,7 +122,7 @@ class OpenKlantPlugin(
         @PluginActionProperty soortDigitaalAdres: String,
         @PluginActionProperty verificatieDatum: String,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Sets a default Digitaal Adres in Open Klant - ${execution.processBusinessKey}"
         }
 
@@ -140,7 +131,7 @@ class OpenKlantPlugin(
                 partijUuid = partijUuid,
                 adres = adres,
                 soortDigitaalAdres = soortDigitaalAdres,
-                referentie = _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.DEFAULT_DIGITALE_ADRES_REFERENCE,
+                referentie = _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.DEFAULT_DIGITALE_ADRES_REFERENCE,
                 verificatieDatum = verificatieDatum,
             )
         val properties =
@@ -165,7 +156,7 @@ class OpenKlantPlugin(
         @PluginActionProperty resultPvName: String,
         execution: DelegateExecution,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Fetching contact history from Open Klant by case UUID: $caseUuid - ${execution.processBusinessKey}"
         }
 
@@ -194,7 +185,7 @@ class OpenKlantPlugin(
         @PluginActionProperty resultPvName: String,
         execution: DelegateExecution,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Fetching contact history from Open Klant by BSN number — business key: ${execution.processBusinessKey}"
         }
         val pluginProperties =
@@ -222,7 +213,7 @@ class OpenKlantPlugin(
         @PluginActionProperty resultPvName: String,
         execution: DelegateExecution,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Fetching contact history from Open Klant by Partij UUID — business key: ${execution.processBusinessKey}"
         }
         val pluginProperties =
@@ -260,7 +251,7 @@ class OpenKlantPlugin(
         @PluginActionProperty achternaam: String?,
         execution: DelegateExecution,
     ) {
-        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.OpenKlantPlugin.Companion.logger.info {
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.plugin.SamenwerkfunctionaliteitPlugin.Companion.logger.info {
             "Registering klantcontact - ${execution.processBusinessKey}"
         }
 
@@ -290,16 +281,6 @@ class OpenKlantPlugin(
             properties,
             klantcontactCreationInformation,
         )
-    }
-
-    private fun fetchKlantcontactenAndStore(
-        execution: DelegateExecution,
-        resultPvName: String,
-        pluginProperties: com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.KlantcontactOptions,
-    ) {
-        val klantcontacten = openKlantPluginService.getAllKlantcontacten(pluginProperties)
-        val contactenMaps = klantcontacten.map { reflectionUtil.deepReflectedMapOf(it) }
-        execution.setVariable(resultPvName, contactenMaps)
     }
 
     companion object {
