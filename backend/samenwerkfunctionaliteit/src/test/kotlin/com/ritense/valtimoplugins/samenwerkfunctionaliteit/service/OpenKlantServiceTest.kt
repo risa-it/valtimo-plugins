@@ -1,0 +1,348 @@
+package com.ritense.valtimoplugins.samenwerkfunctionaliteit.service
+
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.client.OpenKlantClient
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.CreateDigitaalAdresRequest
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.CreatePartijRequest
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.ObjectReference
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Partij
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.SoortDigitaalAdres
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.UuidReference
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.AdresInformation
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.ContactInformation
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties
+import com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.PartijInformationImpl
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import io.mockk.verify
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import java.net.URI
+import kotlin.text.get
+
+@ExtendWith(MockKExtension::class)
+class OpenKlantServiceTest {
+    private val testProperties =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.OpenKlantProperties(
+            klantinteractiesUrl = URI("https://example.com"),
+            token = "dummy-token",
+        )
+
+    @MockK
+    lateinit var client: OpenKlantClient
+
+    @MockK
+    lateinit var partijFactory: PartijFactory
+
+    @MockK
+    lateinit var klantContactFactory: KlantcontactFactory
+    lateinit var service: OpenKlantService
+
+    private val defaultDigitaalAdres =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres(
+            uuid = "ded28f8e-7da9-4ca6-96d5-2955f5641fd6",
+            url = "https://example.com",
+            verstrektDoorBetrokkene = null,
+            verstrektDoorPartij = null,
+            adres = "",
+            soortDigitaalAdres = SoortDigitaalAdres.OVERIG,
+            isStandaardAdres = false,
+            omschrijving = null,
+            referentie = null,
+            expand = null,
+        )
+    private val defaultPartij =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.Partij(
+            uuid = "24c482c7-acec-410f-95e6-72781a9f3064",
+            url = "https://example.com",
+            nummer = null,
+            interneNotitie = null,
+            betrokkenen = emptyList(),
+            categorieRelaties = emptyList(),
+            digitaleAdressen = null,
+            voorkeursDigitaalAdres =
+                _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.ObjectReference(
+                    uuid = "4ba49f26-4b22-4183-a269-bd340b10eac8",
+                    url = "https://example.com",
+                ),
+            vertegenwoordigden = emptyList(),
+            rekeningnummers = null,
+            voorkeursRekeningnummer = null,
+            partijIdentificatoren = null,
+            soortPartij = Partij.SoortPartij.PERSOON,
+            indicatieGeheimhouding = null,
+            voorkeurstaal = null,
+            indicatieActief = true,
+            bezoekadres = null,
+            correspondentieAdres = null,
+            partijIdentificatie = null,
+        )
+    private val defaultCreatePartijRequest =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.CreatePartijRequest(
+            nummer = "",
+            interneNotitie = "",
+            digitaleAdressen = null,
+            voorkeursDigitaalAdres = null,
+            rekeningnummers = null,
+            voorkeursRekeningnummer = null,
+            partijIdentificatoren = emptyList(),
+            soortPartij = Partij.SoortPartij.PERSOON,
+            indicatieGeheimhouding = null,
+            voorkeurstaal = "nl",
+            indicatieActief = true,
+            bezoekadres = null,
+            correspondentieAdres = null,
+            partijIdentificatie = null,
+        )
+
+    private val contactInformation =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.ContactInformation(
+            emailadres = "email@adres.nl",
+            zaaknummer = "ZAAK-1234",
+            achternaam = "Oe",
+            voorvoegselAchternaam = "D",
+            voornaam = "John",
+            bsn = "123456789",
+            voorletters = "",
+        )
+
+    private val partijInformation =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.PartijInformationImpl(
+            bsn = "123456789",
+            voorletters = "J.",
+            voornaam = "John",
+            voorvoegselAchternaam = "",
+            achternaam = "Doe",
+        )
+
+    private val adresInformation =
+        _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.model.AdresInformation(
+            partijUuid = "partij-123",
+            adres = "test@example.com",
+            soortDigitaalAdres = SoortDigitaalAdres.EMAIL,
+            referentie = "ref-1",
+            verificatieDatum = "2024-01-01",
+        )
+
+    @BeforeEach
+    fun setUp() {
+        MockKAnnotations.init(this)
+        service =
+            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.service.DefaultOpenKlantService(
+                client,
+                partijFactory,
+                klantContactFactory,
+            )
+    }
+
+    @Test
+    fun `storeContactInformation should do nothing when supplied email is preferred address`() {
+        // ARRANGE:
+        every { client.getPartijByBsn(contactInformation.bsn, testProperties) } returns defaultPartij
+        every { client.getDigitaalAdresByUuid(any(), testProperties) } returns
+            defaultDigitaalAdres.copy(
+                adres = "email@adres.nl",
+                isStandaardAdres = true,
+                soortDigitaalAdres = SoortDigitaalAdres.EMAIL,
+            )
+
+        // ACT:
+        service.storeContactInformation(
+            testProperties,
+            contactInformation,
+        )
+
+        // ASSERT:
+        verify { client.getPartijByBsn(contactInformation.bsn, testProperties) }
+        verify { client.getDigitaalAdresByUuid(defaultPartij.voorkeursDigitaalAdres!!.uuid, testProperties) }
+        verify(exactly = 0) { client.createDigitaalAdres(any(), testProperties) }
+        verify(exactly = 0) { client.patchPartij(any(), any(), any()) }
+        verify(exactly = 0) { client.createPartij(any(), any()) }
+    }
+
+    @Test
+    fun `storeContactInformation should update existing partij if email is not preferred address`() {
+        // ARRANGE:
+        every { client.getPartijByBsn(contactInformation.bsn, testProperties) } returns defaultPartij
+        every { client.getDigitaalAdresByUuid(any(), testProperties) } returns
+            defaultDigitaalAdres.copy(
+                adres = "email2@adres.nl",
+                isStandaardAdres = true,
+                soortDigitaalAdres = SoortDigitaalAdres.EMAIL,
+            )
+        every { client.getDigitaleAdressenByPartijByUuid(defaultPartij.uuid, testProperties) } returns listOf()
+        val newDigitaalAdres = defaultDigitaalAdres.copy(adres = contactInformation.emailadres)
+        every { client.createDigitaalAdres(any(), testProperties) } returns newDigitaalAdres
+        every { client.patchPartij(any(), any(), any()) } returns defaultPartij
+
+        // ACT:
+        service.storeContactInformation(
+            testProperties,
+            contactInformation,
+        )
+        // ASSERT:
+        verify { client.getPartijByBsn(contactInformation.bsn, testProperties) }
+        verify { client.getDigitaalAdresByUuid(defaultPartij.voorkeursDigitaalAdres!!.uuid, testProperties) }
+        verify { client.getDigitaleAdressenByPartijByUuid(defaultPartij.uuid, testProperties) }
+        verify {
+            client.createDigitaalAdres(
+                match<CreateDigitaalAdresRequest> {
+                    it.adres == contactInformation.emailadres &&
+                        it.soortDigitaalAdres == SoortDigitaalAdres.EMAIL &&
+                        it.referentie == contactInformation.zaaknummer
+                },
+                testProperties,
+            )
+        }
+        verify {
+            client.patchPartij(
+                defaultPartij.uuid,
+                match<Map<String, Any>> { partij ->
+                    val digitaleAdressen = partij["digitaleAdressen"] as List<UuidReference>
+                    digitaleAdressen.any { it.uuid == newDigitaalAdres.uuid }
+                },
+                testProperties,
+            )
+        }
+        verify(exactly = 0) { client.createPartij(any(), any()) }
+    }
+
+    @Test
+    fun `storeContactInformation should create a new partij when no partij exists for supplied bsn`() {
+        // ARRANGE:
+        every { client.getPartijByBsn(contactInformation.bsn, testProperties) } returns null
+        val newPartij = defaultPartij.copy(uuid = "new-partij-uuid")
+        every { partijFactory.createFromBsn(contactInformation) } returns defaultCreatePartijRequest
+        every { client.createPartij(defaultCreatePartijRequest, testProperties) } returns newPartij
+        val newDigitaalAdres = defaultDigitaalAdres.copy(adres = contactInformation.emailadres)
+        every { client.createDigitaalAdres(any(), testProperties) } returns newDigitaalAdres
+        every { client.patchPartij(any(), any(), any()) } returns newPartij
+
+        // ACT:
+        service.storeContactInformation(
+            testProperties,
+            contactInformation,
+        )
+        // ASSERT:
+        verify { client.getPartijByBsn(contactInformation.bsn, testProperties) }
+        verify { partijFactory.createFromBsn(contactInformation) }
+        verify { client.createPartij(defaultCreatePartijRequest, testProperties) }
+        verify {
+            client.createDigitaalAdres(
+                match<CreateDigitaalAdresRequest> {
+                    it.adres == contactInformation.emailadres &&
+                        it.soortDigitaalAdres == SoortDigitaalAdres.EMAIL &&
+                        it.referentie == contactInformation.zaaknummer
+                },
+                testProperties,
+            )
+        }
+        verify {
+            client.patchPartij(
+                newPartij.uuid,
+                match<Map<String, Any>> { partij ->
+                    val digitaleAdressen = partij["digitaleAdressen"] as List<UuidReference>
+                    digitaleAdressen.any { it.uuid == newDigitaalAdres.uuid }
+                },
+                testProperties,
+            )
+        }
+        verify(exactly = 0) { client.getDigitaalAdresByUuid(any(), testProperties) }
+    }
+
+    @Test
+    fun `getOrCreatePartij should return existing partij when there is a partij for supplied bsn`() {
+        // ARRANGE:
+        val existingPartij = defaultPartij.copy(uuid = "existing-partij-uuid")
+        every { client.getPartijByBsn(partijInformation.bsn, testProperties) } returns existingPartij
+
+        val newPartij = defaultPartij.copy(uuid = "new-partij-uuid")
+        every { client.createPartij(defaultCreatePartijRequest, testProperties) } returns newPartij
+
+        // ACT:
+        val resultPartij =
+            service.getOrCreatePartij(
+                properties = testProperties,
+                partijInformation = partijInformation,
+            )
+
+        // ASSERT:
+        assertEquals("existing-partij-uuid", resultPartij.uuid)
+    }
+
+    @Test
+    fun `getOrCreatePartij should create a new partij when no partij exists for supplied bsn`() {
+        // ARRANGE:
+        every { client.getPartijByBsn(partijInformation.bsn, testProperties) } returns null
+
+        val newPartij = defaultPartij.copy(uuid = "new-partij-uuid")
+        every { partijFactory.createFromBsn(partijInformation) } returns defaultCreatePartijRequest
+        every { client.createPartij(defaultCreatePartijRequest, testProperties) } returns newPartij
+
+        // ACT:
+        val resultPartij =
+            service.getOrCreatePartij(
+                properties = testProperties,
+                partijInformation = partijInformation,
+            )
+
+        // ASSERT:
+        assertEquals("new-partij-uuid", resultPartij.uuid)
+    }
+
+    @Test
+    fun `setDefaultDigitaalAdres clears existing defaults and creates new one`() {
+        // ARRANGE
+        val existingAdres =
+            _root_ide_package_.com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto.DigitaalAdres(
+                uuid = "uuid-1",
+                url = "url1",
+                verstrektDoorBetrokkene = null,
+                verstrektDoorPartij = null,
+                adres = "old@test.com",
+                soortDigitaalAdres = SoortDigitaalAdres.EMAIL,
+                isStandaardAdres = true,
+                omschrijving = null,
+                referentie = "old-ref",
+                expand = null,
+            )
+
+        every {
+            client.getDefaultAdressenBySoort(any(), any(), any(), any())
+        } returns listOf(existingAdres)
+
+        val createdResult = existingAdres.copy(uuid = "new-uuid")
+        every {
+            client.createDigitaalAdres(any(), any())
+        } returns createdResult
+
+        val adjustedAdres = existingAdres.copy(referentie = "")
+        every {
+            client.patchDigitaalAdres(any(), any(), any())
+        } returns adjustedAdres
+
+        // ACT
+        val result = service.setDefaultDigitaalAdres(testProperties, adresInformation)
+
+        // ASSERT
+        verify {
+            client.createDigitaalAdres(
+                request =
+                    match {
+                        it.verstrektDoorPartij?.uuid == adresInformation.partijUuid &&
+                            it.adres == adresInformation.adres &&
+                            it.soortDigitaalAdres == adresInformation.soortDigitaalAdres &&
+                            it.isStandaardAdres == true &&
+                            it.referentie == adresInformation.referentie
+                    },
+                properties = testProperties,
+            )
+        }
+
+        assertEquals("new-uuid", result.uuid)
+    }
+}
