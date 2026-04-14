@@ -22,8 +22,12 @@ class SamenwerkfunctionaliteitPlugin(
     @PluginProperty(key = "baseUrl", secret = false, required = true)
     lateinit var baseUrl: URI
 
+    // TODO is dit nodig?
     @PluginProperty(key = "token", secret = true, required = true)
     lateinit var token: String
+
+    @PluginProperty(key = "certificateLocation", secret = true, required = true)
+    lateinit var certificateLocation: String
 
     companion object {
         private val logger = KotlinLogging.logger { }
