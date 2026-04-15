@@ -25,10 +25,6 @@ class SamenwerkfunctionaliteitPlugin(
     @PluginProperty(key = "certificate", secret = true, required = true)
     lateinit var certificate: String
 
-    companion object {
-        private val logger = KotlinLogging.logger { }
-    }
-
     @PluginAction(
         key = "get-actieverzoek",
         title = "Get actieverzoek",
@@ -108,5 +104,9 @@ class SamenwerkfunctionaliteitPlugin(
         activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
     )
     fun getSamenwerkingNotificaties() {
+    }
+
+    companion object {
+        private val logger = KotlinLogging.logger { }
     }
 }
