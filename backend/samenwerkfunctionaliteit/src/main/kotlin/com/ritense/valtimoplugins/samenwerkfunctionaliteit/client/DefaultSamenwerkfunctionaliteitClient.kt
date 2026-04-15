@@ -16,9 +16,9 @@ import java.util.UUID
 class DefaultSamenwerkfunctionaliteitClient(
     private val restClientBuilder: RestClient.Builder,
 ) : SamenwerkfunctionaliteitClient {
-    override fun getActieVerzoek(
+    override fun getActieverzoek(
         properties: SamenwerkfunctionaliteitProperties,
-        actieVerzoekId: UUID,
+        actieverzoekId: UUID,
     ): ActieverzoekResponse {
         TODO("Not yet implemented")
     }
@@ -27,7 +27,10 @@ class DefaultSamenwerkfunctionaliteitClient(
         TODO("Not yet implemented")
     }
 
-    override fun getNotificaties(properties: SamenwerkfunctionaliteitProperties): List<NotificatieResponse> {
+    override fun getSamenwerkingNotificaties(
+        properties: SamenwerkfunctionaliteitProperties,
+        samenwerkingId: String,
+    ): List<NotificatieResponse> {
         TODO("Not yet implemented")
     }
 

@@ -10,14 +10,17 @@ import org.springframework.core.io.InputStreamResource
 import java.util.UUID
 
 interface SamenwerkfunctionaliteitClient {
-    fun getActieVerzoek(
+    fun getActieverzoek(
         properties: SamenwerkfunctionaliteitProperties,
-        actieVerzoekId: UUID,
+        actieverzoekId: UUID,
     ): ActieverzoekResponse
 
     fun getAllActieverzoeken(properties: SamenwerkfunctionaliteitProperties): List<ActieverzoekResponse>
 
-    fun getNotificaties(properties: SamenwerkfunctionaliteitProperties): List<NotificatieResponse>
+    fun getSamenwerkingNotificaties(
+        properties: SamenwerkfunctionaliteitProperties,
+        samenwerkingId: String,
+    ): List<NotificatieResponse>
 
     fun getDocumentenOverzicht(
         properties: SamenwerkfunctionaliteitProperties,
