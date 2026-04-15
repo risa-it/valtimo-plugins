@@ -22,14 +22,91 @@ class SamenwerkfunctionaliteitPlugin(
     @PluginProperty(key = "baseUrl", secret = false, required = true)
     lateinit var baseUrl: URI
 
-    // TODO is dit nodig?
-    @PluginProperty(key = "token", secret = true, required = true)
-    lateinit var token: String
-
-    @PluginProperty(key = "certificateLocation", secret = true, required = true)
-    lateinit var certificateLocation: String
+    @PluginProperty(key = "certificate", secret = true, required = true)
+    lateinit var certificate: String
 
     companion object {
         private val logger = KotlinLogging.logger { }
+    }
+
+    @PluginAction(
+        key = "get-actieverzoek",
+        title = "Get actieverzoek",
+        description = "Haal het actieverzoek op.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun getActieVerzoek() {
+    }
+
+    @PluginAction(
+        key = "get-all-actieverzoeken",
+        title = "Get all actieverzoeken",
+        description = "Haal de actieverzoeken van de deelnemer op.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun getAllActieVerzoeken() {
+    }
+
+    @PluginAction(
+        key = "get-samenwerking-notificaties",
+        title = "Get samenwerking notificaties",
+        description = "Haal de bij de samenwerking horende notificaties van de deelnemer op.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun getSamenwerkingNotificaties() {
+    }
+
+    @PluginAction(
+        key = "get-documenten-overzicht",
+        title = "Get documenten overzicht",
+        description = "Haal een overzicht van documenten in de samenwerking op.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun getDocumentenOverzicht() {
+    }
+
+    @PluginAction(
+        key = "download-document",
+        title = "Download document",
+        description = "Download het document.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun downloadDocument() {
+    }
+
+    @PluginAction(
+        key = "upload-document",
+        title = "Upload document",
+        description = "Voeg een document toe aan de samenwerking.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun uploadDocument() {
+    }
+
+    @PluginAction(
+        key = "get-bericht",
+        title = "Get bericht",
+        description = "Haal een bericht op.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun getBericht() {
+    }
+
+    @PluginAction(
+        key = "post-bericht",
+        title = "Post bericht",
+        description = "Maak een bericht aan.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun postBericht() {
+    }
+
+    @PluginAction(
+        key = "delete-bericht",
+        title = "Delete bericht",
+        description = "Verwijder een bericht.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun deleteBericht() {
     }
 }
