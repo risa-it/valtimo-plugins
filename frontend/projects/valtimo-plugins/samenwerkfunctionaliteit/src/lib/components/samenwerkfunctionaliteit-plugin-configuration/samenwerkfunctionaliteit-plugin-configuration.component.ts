@@ -6,8 +6,7 @@ import {SamenwerkfunctionaliteitConfig} from '../../models/samenwerkfunctionalit
 @Component({
   selector: 'app-samenwerkfunctionaliteit-plugin-configuration',
   imports: [],
-  templateUrl: './samenwerkfunctionaliteit-plugin-configuration.component.html',
-  styleUrl: './samenwerkfunctionaliteit-plugin-configuration.component.scss'
+  templateUrl: './samenwerkfunctionaliteit-plugin-configuration.component.html'
 })
 export class SamenwerkfunctionaliteitPluginConfigurationComponent implements PluginConfigurationComponent, OnInit, OnDestroy {
   @Input() save$: Observable<void>;
