@@ -48,12 +48,30 @@ class SamenwerkfunctionaliteitPlugin(
     }
 
     @PluginAction(
-        key = "get-samenwerking-notificaties",
-        title = "Get samenwerking notificaties",
-        description = "Haal de bij de samenwerking horende notificaties van de deelnemer op.",
+        key = "get-bericht",
+        title = "Get bericht",
+        description = "Haal een bericht op.",
         activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
     )
-    fun getSamenwerkingNotificaties() {
+    fun getBericht() {
+    }
+
+    @PluginAction(
+        key = "post-bericht",
+        title = "Post bericht",
+        description = "Maak een bericht aan.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun postBericht() {
+    }
+
+    @PluginAction(
+        key = "delete-bericht",
+        title = "Delete bericht",
+        description = "Verwijder een bericht.",
+        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
+    )
+    fun deleteBericht() {
     }
 
     @PluginAction(
@@ -84,29 +102,11 @@ class SamenwerkfunctionaliteitPlugin(
     }
 
     @PluginAction(
-        key = "get-bericht",
-        title = "Get bericht",
-        description = "Haal een bericht op.",
+        key = "get-samenwerking-notificaties",
+        title = "Get samenwerking notificaties",
+        description = "Haal de bij de samenwerking horende notificaties van de deelnemer op.",
         activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
     )
-    fun getBericht() {
-    }
-
-    @PluginAction(
-        key = "post-bericht",
-        title = "Post bericht",
-        description = "Maak een bericht aan.",
-        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
-    )
-    fun postBericht() {
-    }
-
-    @PluginAction(
-        key = "delete-bericht",
-        title = "Delete bericht",
-        description = "Verwijder een bericht.",
-        activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
-    )
-    fun deleteBericht() {
+    fun getSamenwerkingNotificaties() {
     }
 }

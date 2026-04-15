@@ -27,10 +27,27 @@ class DefaultSamenwerkfunctionaliteitClient(
         TODO("Not yet implemented")
     }
 
-    override fun getSamenwerkingNotificaties(
+    override fun getBericht(
         properties: SamenwerkfunctionaliteitProperties,
-        samenwerkingId: String,
-    ): List<NotificatieResponse> {
+        actieVerzoekId: UUID,
+        berichtId: UUID,
+    ): BerichtResponse {
+        TODO("Not yet implemented")
+    }
+
+    override fun postBericht(
+        properties: SamenwerkfunctionaliteitProperties,
+        actieverzoekId: UUID,
+        requestBody: CreateBerichtRequest,
+    ): BerichtResponse {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteBericht(
+        properties: SamenwerkfunctionaliteitProperties,
+        actieVerzoekId: UUID,
+        berichtId: UUID,
+    ) {
         TODO("Not yet implemented")
     }
 
@@ -55,27 +72,10 @@ class DefaultSamenwerkfunctionaliteitClient(
         TODO("Not yet implemented")
     }
 
-    override fun getBericht(
+    override fun getSamenwerkingNotificaties(
         properties: SamenwerkfunctionaliteitProperties,
-        actieVerzoekId: UUID,
-        berichtId: UUID,
-    ): BerichtResponse {
-        TODO("Not yet implemented")
-    }
-
-    override fun postBericht(
-        properties: SamenwerkfunctionaliteitProperties,
-        actieverzoekId: UUID,
-        requestBody: CreateBerichtRequest,
-    ): BerichtResponse {
-        TODO("Not yet implemented")
-    }
-
-    override fun deleteBericht(
-        properties: SamenwerkfunctionaliteitProperties,
-        actieVerzoekId: UUID,
-        berichtId: UUID,
-    ) {
+        samenwerkingId: String,
+    ): List<NotificatieResponse> {
         TODO("Not yet implemented")
     }
 

@@ -17,26 +17,6 @@ interface SamenwerkfunctionaliteitClient {
 
     fun getAllActieverzoeken(properties: SamenwerkfunctionaliteitProperties): List<ActieverzoekResponse>
 
-    fun getSamenwerkingNotificaties(
-        properties: SamenwerkfunctionaliteitProperties,
-        samenwerkingId: String,
-    ): List<NotificatieResponse>
-
-    fun getDocumentenOverzicht(
-        properties: SamenwerkfunctionaliteitProperties,
-        samenwerkingId: String,
-    ): DocumentenOverzichtResponse
-
-    fun downloadDocument(
-        properties: SamenwerkfunctionaliteitProperties,
-        documentId: UUID,
-    ): InputStreamResource
-
-    fun uploadDocument(
-        properties: SamenwerkfunctionaliteitProperties,
-        samenwerkingId: String,
-    )
-
     fun getBericht(
         properties: SamenwerkfunctionaliteitProperties,
         actieVerzoekId: UUID,
@@ -54,4 +34,24 @@ interface SamenwerkfunctionaliteitClient {
         actieVerzoekId: UUID,
         berichtId: UUID,
     )
+
+    fun getDocumentenOverzicht(
+        properties: SamenwerkfunctionaliteitProperties,
+        samenwerkingId: String,
+    ): DocumentenOverzichtResponse
+
+    fun downloadDocument(
+        properties: SamenwerkfunctionaliteitProperties,
+        documentId: UUID,
+    ): InputStreamResource
+
+    fun uploadDocument(
+        properties: SamenwerkfunctionaliteitProperties,
+        samenwerkingId: String,
+    )
+
+    fun getSamenwerkingNotificaties(
+        properties: SamenwerkfunctionaliteitProperties,
+        samenwerkingId: String,
+    ): List<NotificatieResponse>
 }
