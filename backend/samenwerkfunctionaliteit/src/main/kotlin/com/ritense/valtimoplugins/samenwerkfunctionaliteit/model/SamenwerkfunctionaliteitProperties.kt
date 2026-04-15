@@ -1,3 +1,7 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.model
 
-data class SamenwerkfunctionaliteitProperties
+import java.net.URI
+
+data class SamenwerkfunctionaliteitProperties(
+    val baseUrl: URI,
+)
