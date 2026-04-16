@@ -1,11 +1,19 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {PluginConfigurationComponent} from '@valtimo/plugin';
+import {PluginConfigurationComponent, PluginTranslatePipeModule} from '@valtimo/plugin';
 import {BehaviorSubject, combineLatest, Observable, Subscription, take} from 'rxjs';
-import {Config} from '../../models/config';
+import {Config} from '../../models';
+import {FormModule, InputModule} from '@valtimo/components';
+import {AsyncPipe, NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-samenwerkfunctionaliteit-plugin-configuration',
-  imports: [],
+  selector: 'samenwerkfunctionaliteit-plugin-configuration',
+  imports: [
+    FormModule,
+    InputModule,
+    PluginTranslatePipeModule,
+    NgIf,
+    AsyncPipe
+  ],
   templateUrl: './samenwerkfunctionaliteit-plugin-configuration.component.html'
 })
 export class SamenwerkfunctionaliteitPluginConfigurationComponent implements PluginConfigurationComponent, OnInit, OnDestroy {
