@@ -29,7 +29,7 @@ pluginManager.withPlugin("maven-publish") {
                         developer {
                             id = "team-risa"
                             name = "Team Risa"
-                            email = "team-valtimo@ritense.com"
+                            email = "gzac@risa-it.nl"
                         }
                     }
                 }
