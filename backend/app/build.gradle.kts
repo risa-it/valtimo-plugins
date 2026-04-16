@@ -31,6 +31,7 @@ dependencies {
     implementation(project(":backend:openklant"))
     implementation(project(":backend:publictask"))
     implementation(project(":backend:rotterdam-oracle-ebs"))
+    implementation(project(":backend:samenwerkfunctionaliteit"))
     implementation(project(":backend:slack"))
     implementation(project(":backend:smtpmail"))
     implementation(project(":backend:spotler"))
