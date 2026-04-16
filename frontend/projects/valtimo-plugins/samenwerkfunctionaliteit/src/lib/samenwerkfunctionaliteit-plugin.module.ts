@@ -5,8 +5,8 @@ import {PluginTranslatePipeModule} from '@valtimo/plugin';
 import {SamenwerkfunctionaliteitPluginConfigurationComponent} from './components/samenwerkfunctionaliteit-plugin-configuration/samenwerkfunctionaliteit-plugin-configuration.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, InputModule, PluginTranslatePipeModule, FormModule, SamenwerkfunctionaliteitPluginConfigurationComponent],
+  declarations: [SamenwerkfunctionaliteitPluginConfigurationComponent],
+  imports: [CommonModule, InputModule, PluginTranslatePipeModule, FormModule],
   exports: [SamenwerkfunctionaliteitPluginConfigurationComponent],
 })
 export class SamenwerkfunctionaliteitPluginModule {
