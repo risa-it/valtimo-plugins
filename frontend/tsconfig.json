@@ -32,6 +32,7 @@
       "@valtimo-plugins/openklant":  ["dist/valtimo-plugins/openklant"],
       "@valtimo-plugins/publictask": ["dist/valtimo-plugins/publictask"],
       "@valtimo-plugins/rotterdam-oracle-ebs": ["dist/valtimo-plugins/rotterdam-oracle-ebs"],
+      "@valtimo-plugins/samenwerkfunctionaliteit": ["dist/valtimo-plugins/samenwerkfunctionaliteit"],
       "@valtimo-plugins/slack": ["dist/valtimo-plugins/slack"],
       "@valtimo-plugins/smtpmail": ["dist/valtimo-plugins/smtpmail"],
       "@valtimo-plugins/spotler": ["dist/valtimo-plugins/spotler"],
