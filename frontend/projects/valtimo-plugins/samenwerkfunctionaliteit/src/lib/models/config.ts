@@ -1,8 +1,8 @@
 import {PluginConfigurationData} from '@valtimo/plugin';
 
-interface SamenwerkfunctionaliteitConfig extends PluginConfigurationData {
+interface Config extends PluginConfigurationData {
   samenwerkfunctionaliteitUrl: string;
   certificate: string;
 }
 
-export {SamenwerkfunctionaliteitConfig};
+export {Config};

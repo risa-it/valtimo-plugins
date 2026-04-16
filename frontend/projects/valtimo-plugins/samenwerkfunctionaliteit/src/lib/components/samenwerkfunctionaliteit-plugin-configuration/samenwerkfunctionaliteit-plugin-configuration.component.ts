@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {PluginConfigurationComponent} from '@valtimo/plugin';
 import {BehaviorSubject, combineLatest, Observable, Subscription, take} from 'rxjs';
-import {SamenwerkfunctionaliteitConfig} from '../../models/samenwerkfunctionaliteitConfig';
+import {Config} from '../../models/config';
 
 @Component({
   selector: 'app-samenwerkfunctionaliteit-plugin-configuration',
@@ -12,14 +12,14 @@ export class SamenwerkfunctionaliteitPluginConfigurationComponent implements Plu
   @Input() save$: Observable<void>;
   @Input() disabled$: Observable<boolean>;
   @Input() pluginId: string;
-  @Input() prefillConfiguration$?: Observable<SamenwerkfunctionaliteitConfig>;
+  @Input() prefillConfiguration$?: Observable<Config>;
 
   @Output() valid: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() configuration: EventEmitter<SamenwerkfunctionaliteitConfig> = new EventEmitter<SamenwerkfunctionaliteitConfig>();
+  @Output() configuration: EventEmitter<Config> = new EventEmitter<Config>();
 
   private saveSubscription: Subscription;
 
-  private readonly formValue$ = new BehaviorSubject<SamenwerkfunctionaliteitConfig | null>(null);
+  private readonly formValue$ = new BehaviorSubject<Config | null>(null);
   private readonly valid$ = new BehaviorSubject<boolean>(false);
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class SamenwerkfunctionaliteitPluginConfigurationComponent implements Plu
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: SamenwerkfunctionaliteitConfig): void {
+  formValueChange(formValue: Config): void {
     const valid = !!(formValue.samenwerkfunctionaliteitUrl && formValue.certificate);
 
     this.valid$.next(valid);
