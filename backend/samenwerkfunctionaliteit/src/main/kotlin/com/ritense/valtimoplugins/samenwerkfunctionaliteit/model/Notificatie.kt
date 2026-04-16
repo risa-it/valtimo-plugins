@@ -1,3 +1,5 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.model
 
-data class Notificatie()
+data class Notificatie(
+    val todo: String,
+)

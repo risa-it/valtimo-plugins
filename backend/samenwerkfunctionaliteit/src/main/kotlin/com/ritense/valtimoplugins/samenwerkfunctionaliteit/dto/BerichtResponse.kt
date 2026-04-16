@@ -1,3 +1,5 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto
 
-data class BerichtResponse()
+data class BerichtResponse(
+    val todo: String,
+)

@@ -1,3 +1,5 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto
 
-data class NotificatieResponse()
+data class NotificatieResponse(
+    val todo: String,
+)

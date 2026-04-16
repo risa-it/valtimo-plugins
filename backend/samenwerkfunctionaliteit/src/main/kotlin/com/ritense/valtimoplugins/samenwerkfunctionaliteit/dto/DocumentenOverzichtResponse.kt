@@ -1,3 +1,5 @@
 package com.ritense.valtimoplugins.samenwerkfunctionaliteit.dto
 
-data class DocumentenOverzichtResponse()
+data class DocumentenOverzichtResponse(
+    val todo: String,
+)
