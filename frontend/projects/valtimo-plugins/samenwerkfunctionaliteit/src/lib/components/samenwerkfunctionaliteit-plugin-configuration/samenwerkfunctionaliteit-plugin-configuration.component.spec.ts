@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SamenwerkfunctionaliteitPluginConfigurationComponent } from './samenwerkfunctionaliteit-plugin-configuration.component';
+import {SamenwerkfunctionaliteitPluginConfigurationComponent} from './samenwerkfunctionaliteit-plugin-configuration.component';
+import {EMPTY, of} from 'rxjs';
+import { Config } from '../../models';
 
 describe('SamenwerkfunctionaliteitPluginConfigurationComponent', () => {
   let component: SamenwerkfunctionaliteitPluginConfigurationComponent;
@@ -10,14 +12,27 @@ describe('SamenwerkfunctionaliteitPluginConfigurationComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SamenwerkfunctionaliteitPluginConfigurationComponent]
     })
-    .compileComponents();
+      .overrideTemplate(SamenwerkfunctionaliteitPluginConfigurationComponent, '')
+      .compileComponents();
 
     fixture = TestBed.createComponent(SamenwerkfunctionaliteitPluginConfigurationComponent);
     component = fixture.componentInstance;
+
+    component.save$ = EMPTY;
+    component.disabled$ = of(false)
+    component.pluginId = 'test-plugin';
+
+    component.prefillConfiguration$ = of({
+      configurationTitle: '',
+      samenwerkfunctionaliteitUrl: '',
+      certificate: ''
+    } as unknown as Config);
+
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component instanceof SamenwerkfunctionaliteitPluginConfigurationComponent).toBeTrue();
   });
 });
