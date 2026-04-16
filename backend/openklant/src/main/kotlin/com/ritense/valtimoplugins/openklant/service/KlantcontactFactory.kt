@@ -11,13 +11,14 @@ class KlantcontactFactory {
         if (klantContactCreationInformation.hasBetrokkene) {
             KlantcontactCreationRequest(
                 klantcontact = klantcontactRequest(klantContactCreationInformation),
-                betrokkene = betrokkeneRequest(klantContactCreationInformation),
+                betrokkene = betrokkeneRequest(klantContactCreationInformation)
             )
         } else {
             KlantcontactCreationRequest(
                 klantcontact = klantcontactRequest(klantContactCreationInformation),
             )
         }
+
 
     private fun klantcontactRequest(klantContactCreationInformation: KlantcontactCreationInformation) =
         KlantcontactCreationRequest.KlantcontactRequest(
@@ -33,25 +34,22 @@ class KlantcontactFactory {
 
     private fun betrokkeneRequest(klantContactCreationInformation: KlantcontactCreationInformation) =
         KlantcontactCreationRequest.BetrokkeneRequest(
-            wasPartij =
-                UuidReference(
-                    uuid =
-                        klantContactCreationInformation.partijUuid
-                            ?: throw IllegalArgumentException("No partijUuid was specified to create a betrokkene request"),
-                ),
+            wasPartij = UuidReference(
+                uuid = klantContactCreationInformation.partijUuid
+                    ?: throw IllegalArgumentException("No partijUuid was specified to create a betrokkene request")
+            ),
             bezoekadres = null,
             correspondentieadres = null,
             contactnaam = contactNaam(klantContactCreationInformation),
             rol = Rol.KLANT,
             organisatienaam = null,
-            initiator = true,
+            initiator = true
         )
 
-    private fun contactNaam(klantContactCreationInformation: KlantcontactCreationInformation) =
-        Contactnaam(
-            voorletters = klantContactCreationInformation.voorletters,
-            voornaam = klantContactCreationInformation.voornaam,
-            voorvoegselAchternaam = klantContactCreationInformation.voorvoegselAchternaam,
-            achternaam = klantContactCreationInformation.achternaam,
-        )
+    private fun contactNaam(klantContactCreationInformation: KlantcontactCreationInformation) = Contactnaam(
+        voorletters = klantContactCreationInformation.voorletters,
+        voornaam = klantContactCreationInformation.voornaam,
+        voorvoegselAchternaam = klantContactCreationInformation.voorvoegselAchternaam,
+        achternaam = klantContactCreationInformation.achternaam
+    )
 }

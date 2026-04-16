@@ -8,26 +8,11 @@ class ReflectionUtil {
     fun deepReflectedMapOf(value: Any?) =
         DeepRecursiveFunction<Any?, Any?> { recursiveValue: Any? ->
             when (recursiveValue) {
-                null -> {
-                    null
-                }
-
-                is String, is Number -> {
-                    recursiveValue
-                }
-
-                is Boolean -> {
-                    recursiveValue.toString()
-                }
-
-                is Collection<*> -> {
-                    recursiveValue.map { item -> callRecursive(item) }
-                }
-
-                is Map<*, *> -> {
-                    recursiveValue.entries.associate { (key, v) -> key.toString() to callRecursive(v) }
-                }
-
+                null -> null
+                is String, is Number -> recursiveValue
+                is Boolean -> recursiveValue.toString()
+                is Collection<*> -> recursiveValue.map { item -> callRecursive(item) }
+                is Map<*, *> -> recursiveValue.entries.associate { (key, v) -> key.toString() to callRecursive(v) }
                 else -> {
                     if (recursiveValue::class.isData) {
                         recursiveValue::class.memberProperties.associate { prop ->
