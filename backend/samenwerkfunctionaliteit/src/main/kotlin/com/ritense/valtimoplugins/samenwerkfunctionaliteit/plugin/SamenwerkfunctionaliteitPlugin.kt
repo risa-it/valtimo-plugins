@@ -29,7 +29,7 @@ class SamenwerkfunctionaliteitPlugin(
         description = "Haal het actieverzoek op.",
         activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
     )
-    fun getActieVerzoek() {
+    fun getActieverzoek() {
     }
 
     @PluginAction(
@@ -38,7 +38,7 @@ class SamenwerkfunctionaliteitPlugin(
         description = "Haal de actieverzoeken van de deelnemer op.",
         activityTypes = [ActivityTypeWithEventName.SERVICE_TASK_START],
     )
-    fun getAllActieVerzoeken() {
+    fun getAllActieverzoeken() {
     }
 
     @PluginAction(
