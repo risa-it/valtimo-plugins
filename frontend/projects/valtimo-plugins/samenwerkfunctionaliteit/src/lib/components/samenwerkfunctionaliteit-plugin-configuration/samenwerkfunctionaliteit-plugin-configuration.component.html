@@ -35,4 +35,14 @@
           [required]="true"
   >
   </v-input>
+  <v-input
+          name="oinNummer"
+          [title]="'oinNummer' | pluginTranslate : pluginId | async"
+          [margin]="true"
+          [fullWidth]="true"
+          [defaultValue]="obs.prefill?.oinNummer"
+          [disabled]="obs.disabled"
+          [required]="true"
+  >
+  </v-input>
 </v-form>

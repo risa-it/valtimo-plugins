@@ -23,6 +23,9 @@ class SamenwerkfunctionaliteitPlugin(
     @PluginProperty(key = "certificate", secret = true, required = true)
     lateinit var certificate: String
 
+    @PluginProperty(key = "oinNummer", secret = false, required = true)
+    lateinit var oinNummer: String
+
     @PluginAction(
         key = "get-actieverzoek",
         title = "Get actieverzoek",
