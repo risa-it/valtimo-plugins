@@ -27,8 +27,8 @@ pluginManager.withPlugin("maven-publish") {
                     description = "Dienst Stelsel Omgevingswet Samenwerkfunctionaliteit plugin for Valtimo"
                     developers {
                         developer {
-                            id = "team-risa"
-                            name = "Team Risa"
+                            id = "risa-it"
+                            name = "RISA IT"
                             email = "gzac@risa-it.nl"
                         }
                     }
