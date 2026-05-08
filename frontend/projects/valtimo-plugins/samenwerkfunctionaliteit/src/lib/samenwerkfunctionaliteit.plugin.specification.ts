@@ -31,9 +31,12 @@ const samenwerkfunctionaliteitPluginSpecification: PluginSpecification = {
       title: 'Samenwerkfunctionaliteit',
       configurationTitle: 'Configuratie van de Samenwerkfunctionaliteit-plugin',
       description:
-        'Een plugin voor het ophalen en versturen van Samenwerkfunctionaliteit-gegevens.',
+        'Een plugin voor het verwerken van Samenwerkingsgegevens binnen de Samenwerkfunctionaliteit-API binnen het Digitaal Stelsel Omgevingswet (DSO).',
       configurationTitleTooltip:
         'In dit onderdeel configureer je de Samenwerkfunctionaliteit-plugin om eenvoudig gegevens te kunnen verzenden en ophalen.',
+      samenwerkfunctionaliteitUrl: 'Samenwerkfunctionaliteit-URL',
+      certificate: 'Certificaat',
+      oinNummer: 'OIN-Nummer',
 
       // Common
       resultPvName: 'Naam van resultaat-procesvariabele',
@@ -44,9 +47,12 @@ const samenwerkfunctionaliteitPluginSpecification: PluginSpecification = {
     en: {
       title: 'Samenwerkfunctionaliteit',
       configurationTitle: 'Samenwerkfunctionaliteit plugin configuration',
-      description: 'A plugin for retrieving and sending Samenwerkfunctionaliteit data.',
+      description: 'A plugin for handling collaboration data within the Samenwerkfunctionaliteit API of the Digitaal Stelsel Omgevingswet (DSO).',
       configurationTitleTooltip:
         'In this section, you configure the Samenwerkfunctionaliteit plugin to easily send and retrieve data.',
+      samenwerkfunctionaliteitUrl: 'Samenwerkfunctionaliteit URL',
+      certificate: 'Certificate',
+      oinNummer: 'OIN-Number',
 
       // Common
       resultPvName: 'Result process variable name',
