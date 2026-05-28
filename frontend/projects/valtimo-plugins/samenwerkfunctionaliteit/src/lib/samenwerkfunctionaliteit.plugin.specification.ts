@@ -31,7 +31,7 @@ const samenwerkfunctionaliteitPluginSpecification: PluginSpecification = {
       title: 'Samenwerkfunctionaliteit',
       configurationTitle: 'Configuratie van de Samenwerkfunctionaliteit-plugin',
       description:
-        'Een plugin voor het verwerken van Samenwerkingsgegevens binnen de Samenwerkfunctionaliteit-API binnen het Digitaal Stelsel Omgevingswet (DSO).',
+        'Een plugin voor het verwerken van gegevens binnen de Samenwerkfunctionaliteit-API binnen het Digitaal Stelsel Omgevingswet (DSO).',
       configurationTitleTooltip:
         'In dit onderdeel configureer je de Samenwerkfunctionaliteit-plugin om eenvoudig gegevens te kunnen verzenden en ophalen.',
       samenwerkfunctionaliteitUrl: 'Samenwerkfunctionaliteit-URL',
