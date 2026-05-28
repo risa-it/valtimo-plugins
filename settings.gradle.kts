@@ -61,3 +61,5 @@ pluginManagement {
         id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
     }
 }
+
+include("backend:samenwerkfunctionaliteit")

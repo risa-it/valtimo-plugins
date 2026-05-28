@@ -102,6 +102,7 @@ import {NotifyNlPluginModule, notifyNlPluginSpecification} from '@valtimo-plugin
 import {ObjectManagementPluginModule, objectManagementPluginSpecification} from '@valtimo-plugins/object-management';
 import {OipKlanttaakPluginModule, oipKlanttaakPluginSpecification} from '@valtimo-plugins/oip-klanttaak';
 import {OpenKlantPluginModule, openKlantPluginSpecification, KlantcontactTabComponent, ContactHistoryTabComponent} from '@valtimo-plugins/openklant';
+import {SamenwerkfunctionaliteitPluginModule, samenwerkfunctionaliteitPluginSpecification} from '@valtimo-plugins/samenwerkfunctionaliteit';
 import {OpenProductPluginModule, openProductPluginSpecification} from '@valtimo-plugins/open-product';
 import {PublictaskPluginModule, publictaskPluginSpecification} from '@valtimo-plugins/publictask';
 import {RotterdamOracleEbsPluginModule, rotterdamOracleEbsPluginSpecification} from '@valtimo-plugins/rotterdam-oracle-ebs';
@@ -187,6 +188,7 @@ export function tabsFactory() {
         ReactiveFormsModule,
         ResourceModule,
         RotterdamOracleEbsPluginModule,
+        SamenwerkfunctionaliteitPluginModule,
         SecurityModule,
         SlackPluginModule,
         SmtpMailPluginModule,
@@ -239,6 +241,7 @@ export function tabsFactory() {
             openZaakPluginSpecification,
             publictaskPluginSpecification,
             rotterdamOracleEbsPluginSpecification,
+            samenwerkfunctionaliteitPluginSpecification,
             slackPluginSpecification,
             smtpmailPluginSpecification,
             spotlerPluginSpecification,

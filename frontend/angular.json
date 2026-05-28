@@ -672,6 +672,47 @@
         }
       }
     },
+    "@valtimo-plugins/samenwerkfunctionaliteit": {
+      "projectType": "library",
+      "root": "projects/valtimo-plugins/samenwerkfunctionaliteit",
+      "sourceRoot": "projects/valtimo-plugins/samenwerkfunctionaliteit/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/valtimo-plugins/samenwerkfunctionaliteit/tsconfig.lib.json",
+            "project": "projects/valtimo-plugins/samenwerkfunctionaliteit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/valtimo-plugins/samenwerkfunctionaliteit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/valtimo-plugins/samenwerkfunctionaliteit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/valtimo-plugins/samenwerkfunctionaliteit/src/test.ts",
+            "tsConfig": "projects/valtimo-plugins/samenwerkfunctionaliteit/tsconfig.spec.json",
+            "karmaConfig": "projects/valtimo-plugins/samenwerkfunctionaliteit/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/valtimo-plugins/slack/src/**/*.ts",
+              "projects/valtimo-plugins/slack/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "@valtimo-plugins/slack": {
       "projectType": "library",
       "root": "projects/valtimo-plugins/slack",
